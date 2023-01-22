@@ -16,6 +16,7 @@ const Step = ({ step }: StepProps) => {
     <button
       className="flex items-center gap-4 text-left"
       onClick={() => setCurrentStep(step)}
+      disabled={!isCurrentStep}
     >
       <span
         className={`${
