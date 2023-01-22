@@ -3,9 +3,11 @@ import StepContent from './StepContent'
 
 export const Layout = () => {
   return (
-    <div className="grid min-h-screen grid-cols-[270px,1fr] rounded-sm p-4">
-      <Sidebar />
-      <StepContent />
+    <div className="flex min-h-screen bg-lightBlue py-[100px]">
+      <div className="mx-auto grid w-[940px] grid-cols-[270px,1fr] rounded-xl bg-white p-4">
+        <Sidebar />
+        <StepContent />
+      </div>
     </div>
   )
 }
