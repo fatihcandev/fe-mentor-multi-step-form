@@ -5,7 +5,7 @@ import { steps } from '@/constants'
 
 const Sidebar = () => {
   return (
-    <div className="relative rounded-lg overflow-hidden pt-10 pl-8">
+    <div className="relative overflow-hidden rounded-lg pt-10 pl-8">
       <Image
         src="/assets/images/bg-sidebar-desktop.svg"
         alt="sidebar background"

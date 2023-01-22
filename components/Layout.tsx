@@ -3,7 +3,7 @@ import StepContent from './StepContent'
 
 export const Layout = () => {
   return (
-    <div className="min-h-screen grid grid-cols-[270px,1fr] p-4 rounded-sm">
+    <div className="grid min-h-screen grid-cols-[270px,1fr] rounded-sm p-4">
       <Sidebar />
       <StepContent />
     </div>
