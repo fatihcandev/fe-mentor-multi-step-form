@@ -1,7 +1,6 @@
 import { steps } from '@/constants'
 import { useFormContext } from '@/hooks'
 import { Step as StepType } from '@/types'
-import cx from 'classnames'
 
 type StepProps = {
   step: StepType

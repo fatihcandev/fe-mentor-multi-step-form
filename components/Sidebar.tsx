@@ -13,10 +13,14 @@ const Sidebar = () => {
         style={{
           objectFit: 'cover',
         }}
+        priority
       />
       <div className="relative flex flex-col gap-8">
-        {Object.keys(steps).map((step: StepType) => (
-          <Step key={step} step={step} />
+        {Object.keys(steps).map(step => (
+          <Step
+            key={step}
+            step={step as StepType}
+          />
         ))}
       </div>
     </div>

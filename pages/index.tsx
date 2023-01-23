@@ -1,6 +1,6 @@
 import { FormProvider } from 'react-hook-form'
-import { Layout } from '../components'
 import { useForm } from '@/hooks'
+import Layout from '@/components/Layout'
 
 export default function Home() {
   const form = useForm()

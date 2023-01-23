@@ -1,8 +1,11 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
   "tailwindConfig": "./tailwind.config.js",
   "singleQuote": true,
   "semi": false,
   "jsxSingleQuote": false,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "singleAttributePerLine": true
 }

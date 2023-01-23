@@ -16,6 +16,7 @@ export const useForm = () => {
       email: '',
       phone: '',
     },
+    mode: 'onChange',
   })
 }
 

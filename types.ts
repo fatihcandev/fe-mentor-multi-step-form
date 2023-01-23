@@ -7,4 +7,5 @@ export type StepInfo = {
   stepTitle: string
   title: string
   subtitle: string
+  content: JSX.Element
 }
