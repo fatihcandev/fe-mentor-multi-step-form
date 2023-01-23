@@ -1,6 +1,3 @@
-// input component with a label on top left and error message on top right
-// if there is an error it should be red and input border should be red
-
 import React from 'react'
 
 type NativeInputProps = Omit<React.ComponentPropsWithRef<'input'>, 'onChange'>
