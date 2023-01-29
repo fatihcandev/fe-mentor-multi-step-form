@@ -13,9 +13,7 @@ const StepContent = () => {
     const isValid = await trigger()
     if (!isValid) return
     const values = getValues()
-    reset(values, {
-      keepValues: true,
-    })
+    reset(values)
 
     goToNextStep()
   }

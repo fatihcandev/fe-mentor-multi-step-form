@@ -14,7 +14,7 @@ export const Switch = ({ checked, onChange }: SwitchProps) => {
         type="checkbox"
         checked={checked}
         onChange={e => onChange(e.target.checked)}
-        className="absolute inset-0 z-20 opacity-0"
+        className="absolute inset-0 z-20 cursor-pointer opacity-0"
       />
       <span
         className={`absolute left-1 z-10 flex h-3 w-3 rounded-[50%] bg-white transition-all ${

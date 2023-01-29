@@ -9,13 +9,13 @@ type StepProps = {
 const Step = ({ step }: StepProps) => {
   const { stepTitle } = steps[step]
   const stepNumber = Object.keys(steps).indexOf(step) + 1
-  const { currentStep, setCurrentStep } = useFormContext()
+  const { currentStep, completedSteps, setCurrentStep } = useFormContext()
   const isCurrentStep = currentStep === step
   return (
     <button
       className="flex items-center gap-4 text-left"
       onClick={() => setCurrentStep(step)}
-      disabled={!isCurrentStep}
+      disabled={!completedSteps.includes(step)}
     >
       <span
         className={`${

@@ -27,5 +27,6 @@ export const schema = z.object({
     }),
   selectedPlan: PlanEnum,
   isYearlyPrice: z.boolean(),
+  completedSteps: z.array(StepEnum),
 })
 export type FormValues = z.infer<typeof schema>
