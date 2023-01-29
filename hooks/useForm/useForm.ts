@@ -4,7 +4,7 @@ import {
 } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormValues, schema } from './schema'
-import { Step } from '@/types'
+import { AddOn, Plan, Step } from '@/types'
 import { steps } from '@/constants'
 
 export const useForm = () => {
@@ -12,12 +12,13 @@ export const useForm = () => {
     resolver: zodResolver(schema),
     defaultValues: {
       currentStep: 'Info',
+      completedSteps: [],
       name: '',
       email: '',
       phone: '',
       selectedPlan: 'Arcade',
       isYearlyPrice: false,
-      completedSteps: [],
+      selectedAddOns: ['OnlineService', 'LargerStorage'],
     },
     mode: 'onChange',
   })
@@ -33,22 +34,20 @@ const numberedSteps: Record<number, Step> = {
 export const useFormContext = () => {
   const form = useRHFormContext<FormValues>()
   const { setValue, watch } = form
-  const { currentStep, completedSteps, selectedPlan, isYearlyPrice } = watch()
+  const {
+    currentStep,
+    completedSteps,
+    selectedPlan,
+    isYearlyPrice,
+    selectedAddOns,
+  } = watch()
   const currentStepNumber = Object.keys(steps).indexOf(currentStep) + 1
 
-  const setCurrentStep = (step: FormValues['currentStep']) => {
+  const setCurrentStep = (step: Step) => {
     setValue('currentStep', step)
   }
 
-  const setSelectedPlan = (plan: FormValues['selectedPlan']) => {
-    setValue('selectedPlan', plan)
-  }
-
-  const setYearlyPrice = (isYearly: FormValues['isYearlyPrice']) => {
-    setValue('isYearlyPrice', isYearly)
-  }
-
-  const completeStep = (step: FormValues['currentStep']) => {
+  const completeStep = (step: Step) => {
     if (completedSteps.includes(step)) return
     setValue('completedSteps', [...completedSteps, step])
   }
@@ -66,6 +65,25 @@ export const useFormContext = () => {
     completeStep(currentStep)
   }
 
+  const setSelectedPlan = (plan: Plan) => {
+    setValue('selectedPlan', plan)
+  }
+
+  const setYearlyPrice = (isYearly: boolean) => {
+    setValue('isYearlyPrice', isYearly)
+  }
+
+  const handleSelectAddOn = (addOn: AddOn) => {
+    if (selectedAddOns.includes(addOn)) {
+      setValue(
+        'selectedAddOns',
+        selectedAddOns.filter(selectedAddOn => selectedAddOn !== addOn)
+      )
+    } else {
+      setValue('selectedAddOns', [...selectedAddOns, addOn])
+    }
+  }
+
   return {
     ...form,
     currentStep,
@@ -73,10 +91,12 @@ export const useFormContext = () => {
     completedSteps,
     isYearlyPrice,
     selectedPlan,
+    selectedAddOns,
     setCurrentStep,
-    setSelectedPlan,
-    setYearlyPrice,
     goBack,
     goToNextStep,
+    setSelectedPlan,
+    setYearlyPrice,
+    handleSelectAddOn,
   }
 }

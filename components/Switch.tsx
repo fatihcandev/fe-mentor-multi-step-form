@@ -1,9 +1,6 @@
-// switch component
-
-import React from 'react'
-
 export interface SwitchProps {
   checked: boolean
+  // eslint-disable-next-line no-unused-vars
   onChange: (checked: boolean) => void
 }
 

@@ -2,13 +2,14 @@ import { useFormContext } from '@/hooks'
 
 type PriceProps = React.ComponentPropsWithoutRef<'span'> & {
   price: number
+  prefix?: string
 }
 
-const Price = ({ price, ...props }: PriceProps) => {
+const Price = ({ price, prefix = '', ...props }: PriceProps) => {
   const { isYearlyPrice } = useFormContext()
   return (
     <span {...props}>
-      ${price}/{isYearlyPrice ? 'yr' : 'mo'}
+      {prefix}${price}/{isYearlyPrice ? 'yr' : 'mo'}
     </span>
   )
 }

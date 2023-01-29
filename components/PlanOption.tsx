@@ -7,8 +7,8 @@ const PlanOption = ({ type, icon, title, price }: PlanInfo) => {
   const isSelected = selectedPlan === type
   return (
     <button
-      className={`flex h-[160px] w-[138px] flex-col rounded-lg border-[1px] border-coolGray p-4 hover:border-purplishBlue ${
-        isSelected ? 'border-purplishBlue bg-alabaster' : ''
+      className={`flex h-[160px] w-[138px] flex-col rounded-lg border border-coolGray p-4 hover:border-purplishBlue ${
+        isSelected ? 'border-purplishBlue bg-magnolia' : ''
       }`}
       onClick={() => setSelectedPlan(type)}
     >

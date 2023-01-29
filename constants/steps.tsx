@@ -1,3 +1,4 @@
+import AddOnsStep from '@/components/AddOnsStep'
 import InfoStep from '@/components/InfoStep'
 import PlanStep from '@/components/PlanStep'
 import { Step, StepInfo } from '@/types'
@@ -19,7 +20,7 @@ export const steps: Record<Step, StepInfo> = {
     stepTitle: 'ADD-ONS',
     title: 'Pick add-ons',
     subtitle: 'Add-ons help enhance your gaming experience.',
-    content: <div>Add-Ons</div>,
+    content: <AddOnsStep />,
   },
   Summary: {
     stepTitle: 'SUMMARY',

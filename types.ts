@@ -1,5 +1,5 @@
 import * as z from 'zod'
-import { PlanEnum, StepEnum } from '@/hooks/useForm/schema'
+import { AddOnEnum, PlanEnum, StepEnum } from '@/hooks/useForm/schema'
 
 export type Step = z.infer<typeof StepEnum>
 
@@ -16,5 +16,14 @@ export type PlanInfo = {
   type: Plan
   title: string
   icon: JSX.Element
+  price: number
+}
+
+export type AddOn = z.infer<typeof AddOnEnum>
+
+export type AddOnInfo = {
+  type: AddOn
+  title: string
+  description: string
   price: number
 }

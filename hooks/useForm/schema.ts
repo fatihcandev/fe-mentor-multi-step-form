@@ -12,8 +12,15 @@ export const StepEnum = z.enum(['Info', 'Plan', 'Add-Ons', 'Summary'])
 
 export const PlanEnum = z.enum(['Arcade', 'Advanced', 'Pro'])
 
+export const AddOnEnum = z.enum([
+  'OnlineService',
+  'LargerStorage',
+  'CustomizableProfile',
+])
+
 export const schema = z.object({
   currentStep: StepEnum,
+  completedSteps: z.array(StepEnum),
   name: z.string().min(1, REQUIRED_ERROR),
   email: z.string().min(1, REQUIRED_ERROR).email({
     message: EMAIL_ERROR,
@@ -27,6 +34,6 @@ export const schema = z.object({
     }),
   selectedPlan: PlanEnum,
   isYearlyPrice: z.boolean(),
-  completedSteps: z.array(StepEnum),
+  selectedAddOns: z.array(AddOnEnum),
 })
 export type FormValues = z.infer<typeof schema>

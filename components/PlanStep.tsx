@@ -1,7 +1,7 @@
 import PlanOption from './PlanOption'
 import PaymentPeriodSwitch from './PaymentPeriodSwitch/PaymentPeriodSwitch'
 import { useFormContext } from '@/hooks'
-import { getPlans } from '@/constants/plans'
+import { getPlans } from '@/constants'
 
 const PlanStep = () => {
   const { isYearlyPrice } = useFormContext()
