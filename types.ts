@@ -13,6 +13,7 @@ export type StepInfo = {
 export type Plan = z.infer<typeof PlanEnum>
 
 export type PlanInfo = {
+  type: Plan
   title: string
   icon: JSX.Element
   price: number

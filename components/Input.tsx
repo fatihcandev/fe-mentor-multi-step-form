@@ -8,7 +8,7 @@ interface InputProps extends NativeInputProps {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, id, value, ...props }, ref) => {
+  ({ label, error, id, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-1">
         <div className="flex justify-between">
@@ -27,7 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           className={`rounded-md border border-coolGray py-3 px-4 text-marineBlue placeholder-coolGray  outline-none hover:border-purplishBlue focus:border-purplishBlue ${
-            error && 'border-strawberryRed'
+            error ? 'border-strawberryRed' : ''
           }`}
           {...props}
         />

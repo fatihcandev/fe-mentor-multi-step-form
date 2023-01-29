@@ -22,7 +22,7 @@ const StepContent = () => {
 
   return (
     <div className="flex flex-col px-[90px] pt-16 pb-8">
-      <div className="mb-11 flex flex-col gap-4">
+      <div className="mb-9 flex flex-col gap-4">
         <h1 className="text-4xl font-bold text-marineBlue">{title}</h1>
         <p className="text-coolGray">{subtitle}</p>
       </div>

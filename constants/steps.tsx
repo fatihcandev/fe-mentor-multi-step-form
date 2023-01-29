@@ -1,4 +1,5 @@
 import InfoStep from '@/components/InfoStep'
+import PlanStep from '@/components/PlanStep'
 import { Step, StepInfo } from '@/types'
 
 export const steps: Record<Step, StepInfo> = {
@@ -12,7 +13,7 @@ export const steps: Record<Step, StepInfo> = {
     stepTitle: 'SELECT PLAN',
     title: 'Select your plan',
     subtitle: 'You have the option of monthly or yearly billing.',
-    content: <div>Plan</div>,
+    content: <PlanStep />,
   },
   'Add-Ons': {
     stepTitle: 'ADD-ONS',
