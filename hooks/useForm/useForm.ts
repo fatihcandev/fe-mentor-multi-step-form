@@ -15,6 +15,8 @@ export const useForm = () => {
       name: '',
       email: '',
       phone: '',
+      selectedPlan: 'Arcade',
+      isYearlyPrice: false,
     },
     mode: 'onChange',
   })
@@ -30,7 +32,7 @@ const numberedSteps: Record<number, Step> = {
 export const useFormContext = () => {
   const form = useRHFormContext<FormValues>()
   const { setValue, watch } = form
-  const { currentStep } = watch()
+  const { currentStep, isYearlyPrice } = watch()
   const currentStepNumber = Object.keys(steps).indexOf(currentStep) + 1
 
   const setCurrentStep = (step: FormValues['currentStep']) => {
@@ -53,6 +55,7 @@ export const useFormContext = () => {
     ...form,
     currentStep,
     currentStepNumber,
+    isYearlyPrice,
     setCurrentStep,
     goBack,
     goToNextStep,

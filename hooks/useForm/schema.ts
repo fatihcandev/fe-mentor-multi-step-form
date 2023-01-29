@@ -10,6 +10,8 @@ import {
 
 export const StepEnum = z.enum(['Info', 'Plan', 'Add-Ons', 'Summary'])
 
+export const PlanEnum = z.enum(['Arcade', 'Advanced', 'Pro'])
+
 export const schema = z.object({
   currentStep: StepEnum,
   name: z.string().min(1, REQUIRED_ERROR),
@@ -23,5 +25,7 @@ export const schema = z.object({
     .refine(value => phoneNumberRegex.test(value), {
       message: PHONE_ERROR,
     }),
+  selectedPlan: PlanEnum,
+  isYearlyPrice: z.boolean(),
 })
 export type FormValues = z.infer<typeof schema>
