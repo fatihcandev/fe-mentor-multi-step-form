@@ -1,6 +1,7 @@
 import AddOnsStep from '@/components/AddOnsStep'
 import InfoStep from '@/components/InfoStep'
 import PlanStep from '@/components/PlanStep'
+import { SummaryStep } from '@/components/SummaryStep'
 import { Step, StepInfo } from '@/types'
 
 export const steps: Record<Step, StepInfo> = {
@@ -25,7 +26,7 @@ export const steps: Record<Step, StepInfo> = {
   Summary: {
     stepTitle: 'SUMMARY',
     title: 'Finishing up',
-    subtitle: 'Please review your information and confirm your purchase.',
-    content: <div>Summary</div>,
+    subtitle: 'Double-check everything looks OK before confirming.',
+    content: <SummaryStep />,
   },
 }

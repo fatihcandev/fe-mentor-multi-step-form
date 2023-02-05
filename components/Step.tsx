@@ -16,6 +16,7 @@ const Step = ({ step }: StepProps) => {
       className="flex items-center gap-4 text-left"
       onClick={() => setCurrentStep(step)}
       disabled={!completedSteps.includes(step)}
+      type="button"
     >
       <span
         className={`${

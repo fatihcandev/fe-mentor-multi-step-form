@@ -1,24 +1,25 @@
-import { AddOn, AddOnInfo } from '@/types'
+import { AddOn } from '@/types'
 
-export const getAddOns = (
-  isYearlyPrice: boolean
-): Record<AddOn, AddOnInfo> => ({
-  OnlineService: {
+export const addOns: AddOn[] = [
+  {
     type: 'OnlineService',
     title: 'Online service',
     description: 'Access to multiplayer games',
-    price: isYearlyPrice ? 10 : 1,
+    monthlyPrice: 1,
+    yearlyPrice: 10,
   },
-  LargerStorage: {
+  {
     type: 'LargerStorage',
     title: 'Larger storage',
     description: 'Extra 1TB of cloud save',
-    price: isYearlyPrice ? 20 : 2,
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
-  CustomizableProfile: {
+  {
     type: 'CustomizableProfile',
     title: 'Customizable profile',
     description: 'Custom theme on your profile',
-    price: isYearlyPrice ? 20 : 2,
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
-})
+]

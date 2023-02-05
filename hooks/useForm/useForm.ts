@@ -5,7 +5,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormValues, schema } from './schema'
 import { AddOn, Plan, Step } from '@/types'
-import { steps } from '@/constants'
+import { addOns, plans, steps } from '@/constants'
 
 export const useForm = () => {
   return useReactHookForm<FormValues>({
@@ -16,9 +16,10 @@ export const useForm = () => {
       name: '',
       email: '',
       phone: '',
-      selectedPlan: 'Arcade',
-      isYearlyPrice: false,
-      selectedAddOns: ['OnlineService', 'LargerStorage'],
+      selectedPlan: plans[0],
+      paymentPeriod: 'Monthly',
+      selectedAddOns: [addOns[0], addOns[1]],
+      confirmed: false,
     },
     mode: 'onChange',
   })
@@ -38,10 +39,15 @@ export const useFormContext = () => {
     currentStep,
     completedSteps,
     selectedPlan,
-    isYearlyPrice,
+    paymentPeriod,
     selectedAddOns,
+    confirmed,
   } = watch()
   const currentStepNumber = Object.keys(steps).indexOf(currentStep) + 1
+  const isYearlyPrice = paymentPeriod === 'Yearly'
+  const selectedPlanCost = isYearlyPrice
+    ? selectedPlan.yearlyPrice
+    : selectedPlan.monthlyPrice
 
   const setCurrentStep = (step: Step) => {
     setValue('currentStep', step)
@@ -69,16 +75,17 @@ export const useFormContext = () => {
     setValue('selectedPlan', plan)
   }
 
-  const setYearlyPrice = (isYearly: boolean) => {
-    setValue('isYearlyPrice', isYearly)
+  const togglePaymentPeriod = () => {
+    const newPaymentPeriod = paymentPeriod === 'Monthly' ? 'Yearly' : 'Monthly'
+    setValue('paymentPeriod', newPaymentPeriod)
   }
 
   const handleSelectAddOn = (addOn: AddOn) => {
-    if (selectedAddOns.includes(addOn)) {
-      setValue(
-        'selectedAddOns',
-        selectedAddOns.filter(selectedAddOn => selectedAddOn !== addOn)
+    if (selectedAddOns.some(sa => sa.type === addOn.type)) {
+      const filteredAddOns = selectedAddOns.filter(
+        selectedAddOn => selectedAddOn.type !== addOn.type
       )
+      setValue('selectedAddOns', filteredAddOns)
     } else {
       setValue('selectedAddOns', [...selectedAddOns, addOn])
     }
@@ -91,12 +98,15 @@ export const useFormContext = () => {
     completedSteps,
     isYearlyPrice,
     selectedPlan,
+    selectedPlanCost,
+    paymentPeriod,
     selectedAddOns,
+    confirmed,
     setCurrentStep,
     goBack,
     goToNextStep,
     setSelectedPlan,
-    setYearlyPrice,
+    togglePaymentPeriod,
     handleSelectAddOn,
   }
 }

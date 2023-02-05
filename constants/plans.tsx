@@ -1,23 +1,26 @@
 import { Advanced, Arcade, Pro } from '@/components/icons'
-import { Plan, PlanInfo } from '@/types'
+import { Plan } from '@/types'
 
-export const getPlans = (isYearlyPrice: boolean): Record<Plan, PlanInfo> => ({
-  Arcade: {
+export const plans: Plan[] = [
+  {
     type: 'Arcade',
     title: 'Arcade',
     icon: <Arcade />,
-    price: isYearlyPrice ? 90 : 9,
+    monthlyPrice: 9,
+    yearlyPrice: 90,
   },
-  Advanced: {
+  {
     type: 'Advanced',
     title: 'Advanced',
     icon: <Advanced />,
-    price: isYearlyPrice ? 120 : 12,
+    monthlyPrice: 12,
+    yearlyPrice: 120,
   },
-  Pro: {
+  {
     type: 'Pro',
     title: 'Pro',
     icon: <Pro />,
-    price: isYearlyPrice ? 150 : 15,
+    monthlyPrice: 15,
+    yearlyPrice: 150,
   },
-})
+]
