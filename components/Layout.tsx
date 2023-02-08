@@ -3,8 +3,15 @@ import Sidebar from './Sidebar'
 import StepContent from './StepContent'
 
 const Layout = () => {
-  const { goToNextStep, trigger, reset, getValues, handleSubmit } =
-    useFormContext()
+  const {
+    goToNextStep,
+    trigger,
+    reset,
+    getValues,
+    handleSubmit,
+    setValue,
+    currentStep,
+  } = useFormContext()
 
   const onSubmit = async () => {
     const isValid = await trigger()
@@ -12,7 +19,11 @@ const Layout = () => {
     const values = getValues()
     reset(values)
 
-    goToNextStep()
+    if (currentStep === 'Summary') {
+      setValue('confirmed', true)
+    } else {
+      goToNextStep()
+    }
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
